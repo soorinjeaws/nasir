@@ -1,4 +1,3 @@
-
 pipeline{
     agent {
         node {
@@ -9,8 +8,10 @@ pipeline{
     }
     stages{
         stage('build') {
+            steps{
             echo " ----build-started----- "
             sh  'mvn clean install -Dmaven.test.skip=true'
+        }
         }
     }
 
