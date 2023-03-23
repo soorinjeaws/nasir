@@ -1,3 +1,4 @@
+
 pipeline{
     agent {
         node {
@@ -15,6 +16,3 @@ pipeline{
 
 
 }
-
-    
-  
