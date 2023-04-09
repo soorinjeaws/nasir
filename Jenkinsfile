@@ -11,17 +11,17 @@ pipeline {
                 sh '/opt/apache-maven-3.9.1/bin/mvn clean install -Dmaven.test.skip=true'
             }
         }
-        stage('sonaranalysys') {
+        stage("Sonar Analysis") {
             environment {
-                scannarHome = tool 'valaxy-sonarscanner'
+               scannerHome = tool 'valaxy-sonarscanner'
             }
             steps {
-                echo "*********sonar-analysys**********"
-                withSonarQubeEnv('valaxy-sonarqube-server') {
-                    sh "{$scannarHome}/bin/sonar/sonar-scanner"
-                }
-                echo "*********sonar-analysys**********"
-            }
+                echo '<--------------- Sonar Analysis started  --------------->'
+                withSonarQubeEnv('valaxy-sonarqube-server') {    
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }    
+                echo '<--------------- Sonar Analysis stopped  --------------->' 
+            }   
         }
     }
 }
